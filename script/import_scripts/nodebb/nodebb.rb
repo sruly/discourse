@@ -395,7 +395,7 @@ class ImportScripts::NodeBB < ImportScripts::Base
             post["upvoted_by"].each do |upvoter_id|
               user = User.new
               user.id = user_id_from_imported_user_id(upvoter_id) || Discourse::SYSTEM_USER_ID
-              PostActionCreator.create(user, p, :like)
+              PostActionCreator.like(user, p)
             end
           end
         }
